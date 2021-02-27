@@ -6,16 +6,17 @@ namespace Coronavirus.Models
 {
     public class Content
     {
-        public int updated { get; set; } // TimeStamp data da atualização
-        public int cases { get; set; } // total de casos
-        public int deaths { get; set; } // total de mortos
-        public int recovered { get; set; } // total de recuperados
+        public long Updated { get; set; } // TimeStamp data da atualização
+        public int Cases { get; set; } // total de casos
 
-        public int active { get; set; } // ativos
-        public int critical { get; set; } // casos críticos
+        public int Deaths { get; set; } // total de mortos
+        public int Recovered { get; set; } // total de recuperados
 
-        public int tests { get; set; } // total de teste?
+        public int Active { get; set; } // ativos
+        public int Critical { get; set; } // casos críticos
 
-        public int population { get; set; } // total população
+        public int Tests { get; set; } // total de teste?
+
+        public long Population { get; set; } // total população
     }
 }
