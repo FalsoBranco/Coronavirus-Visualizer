@@ -6,20 +6,20 @@ namespace Coronavirus.Models
 {
     public class CovidCountry : Content
     {
-        public string country { get; set; }
-        public Countryinfo countryInfo { get; set; }
+        public string Country { get; set; }
+        public Countryinfo CountryInfo { get; set; }
 
-        public int todayCases { get; set; }
+        public long TodayCases { get; set; }
 
-        public int todayDeaths { get; set; }
+        public long TodayDeaths { get; set; }
 
-        public int continent { get; set; }
+        public int Continent { get; set; }
     }
 
     public class Countryinfo
     {
-        public string iso2 { get; set; }
-        public string iso3 { get; set; }
-        public string flag { get; set; }
+        public string Iso2 { get; set; }
+        public string Iso3 { get; set; }
+        public string Flag { get; set; }
     }
 }
