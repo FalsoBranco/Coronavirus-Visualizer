@@ -6,6 +6,6 @@ namespace Coronavirus.Models
 {
     public class CovidAll : Content
     {
-        public int affectedCountries { get; set; } // países afetados
+        public int AffectedCountries { get; set; } // países afetados
     }
 }
