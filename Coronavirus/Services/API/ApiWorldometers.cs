@@ -10,30 +10,25 @@ namespace Coronavirus.Services.API
 {
     public class ApiWorldometers
     {
-        private readonly HttpClient _client;
-
-        public ApiWorldometers()
-        {
-            _client = new HttpClient
-            {
-                BaseAddress = new Uri("https://disease.sh")
-            };
-        }
-
         public async Task<CovidAll> GetCovidAllAsync()
         {
-            using (_client)
+            using (CoronavirusApiHttpClient client = new CoronavirusApiHttpClient())
             {
-                HttpResponseMessage responseMessage = await _client.GetAsync("/v3/covid-19/all");
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    string jsonResponse = await responseMessage.Content.ReadAsStringAsync();
-                    return JsonSerializer.Deserialize<CovidAll>(jsonResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                }
-                else
-                {
-                    return null;
-                }
+                string uri = "/covid-19/all";
+                return await client.GetAsync<CovidAll>(uri);
+            }
+        }
+
+        public async Task<List<CovidCountry>> GetCovidAllCountriesAsync()
+        {
+            using (CoronavirusApiHttpClient client = new CoronavirusApiHttpClient())
+            {
+                //countries? sort = cases
+                //cases, todayCases, deaths, todayDeaths, recovered, active, critica
+                string uri = "/v3/covid-19/countries";
+
+                List<CovidCountry> covidCountries = await client.GetAsync<List<CovidCountry>>(uri);
+                return covidCountries;
             }
         }
     }
