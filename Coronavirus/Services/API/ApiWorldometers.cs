@@ -31,16 +31,5 @@ namespace Coronavirus.Services.API
                 return covidCountries;
             }
         }
-
-        public async Task<CovidCountry> GetCovidSingleCountryAsync(string country)
-        {
-            using (CoronavirusApiHttpClient client = new CoronavirusApiHttpClient())
-            {
-                string uri = $"/v3/covid-19/countries/{country}";
-
-                CovidCountry covidCountries = await client.GetAsync<CovidCountry>(uri);
-                return covidCountries;
-            }
-        }
     }
 }
