@@ -18,7 +18,7 @@ namespace Coronavirus
         {
             HttpResponseMessage responseMessage = await GetAsync(endpoint);
             string jsonResponse = await responseMessage.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<T>(jsonResponse);
+            return JsonSerializer.Deserialize<T>(jsonResponse, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
     }
 }

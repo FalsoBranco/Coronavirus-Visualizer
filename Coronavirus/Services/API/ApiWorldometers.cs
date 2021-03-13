@@ -5,41 +5,22 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using System.Linq;
 
 namespace Coronavirus.Services.API
 {
-    public class ApiWorldometers
+    public class ApiWorldometers : ICoronavirusCountriesServices
     {
-        public async Task<CovidAll> GetCovidAllAsync()
-        {
-            using (CoronavirusApiHttpClient client = new CoronavirusApiHttpClient())
-            {
-                string uri = "/covid-19/all";
-                return await client.GetAsync<CovidAll>(uri);
-            }
-        }
-
-        public async Task<List<CovidCountry>> GetCovidAllCountriesAsync()
+        public async Task<IEnumerable<CovidCountry>> GetTopCases(int Amount)
         {
             using (CoronavirusApiHttpClient client = new CoronavirusApiHttpClient())
             {
                 //countries? sort = cases
                 //cases, todayCases, deaths, todayDeaths, recovered, active, critica
-                string uri = "/v3/covid-19/countries";
+                string uri = "/v3/covid-19/countries?sort=cases";
 
-                List<CovidCountry> covidCountries = await client.GetAsync<List<CovidCountry>>(uri);
-                return covidCountries;
-            }
-        }
-
-        public async Task<CovidCountry> GetCovidCountryAsync(string country)
-        {
-            using (CoronavirusApiHttpClient client = new CoronavirusApiHttpClient())
-            {
-                string uri = $"/v3/covid-19/countries/{country}";
-
-                CovidCountry covidCountries = await client.GetAsync<CovidCountry>(uri);
-                return covidCountries;
+                IEnumerable<CovidCountry> covidCountries = await client.GetAsync<IEnumerable<CovidCountry>>(uri);
+                return covidCountries.Take(Amount);
             }
         }
     }
