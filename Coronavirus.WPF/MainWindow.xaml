@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Coronavirus.WPF"
+        xmlns:views="clr-namespace:Coronavirus.WPF.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="580" Width="1020">
 
+    <Grid>
+        <views:CoronavirusCountriesChartView Margin="5" DataContext="{Binding CoronavirusCountriesChartViewModel}" />
     </Grid>
 </Window>
