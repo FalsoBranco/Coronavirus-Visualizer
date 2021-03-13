@@ -13,7 +13,7 @@ namespace Coronavirus.Models
 
         public long TodayDeaths { get; set; }
 
-        public int Continent { get; set; }
+        public string Continent { get; set; }
     }
 
     public class Countryinfo

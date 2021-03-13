@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Coronavirus.Models
 {
-    public class Content
+    public abstract class Content
     {
         public long Updated { get; set; } // TimeStamp data da atualização
         public int Cases { get; set; } // total de casos
